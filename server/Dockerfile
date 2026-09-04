@@ -8,13 +8,14 @@
 #
 # (see README → "Deploy the server so other people can use the app").
 
-FROM node:20-alpine
+FROM node:20-slim
 
-# Standalone yt-dlp binary (self-contained; no Python needed).
-RUN apk add --no-cache curl \
-  && curl -fsSL -A "muffin-music-docker" -o /usr/local/bin/yt-dlp \
-     https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
-  && chmod +x /usr/local/bin/yt-dlp
+# yt-dlp is a Python program (the release "binary" is a zipapp that needs
+# `python3`). Installing it via pip is the most reliable cross-version path.
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends python3 python3-pip \
+  && pip3 install --no-cache-dir --break-system-packages yt-dlp \
+  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
