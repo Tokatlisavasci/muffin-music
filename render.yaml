@@ -13,5 +13,5 @@ services:
     runtime: docker
     plan: free
     dockerfilePath: server/Dockerfile
-    dockerContextPath: server
+    dockerContext: server
     healthCheckPath: /api/health
