@@ -1,0 +1,17 @@
+# Render Blueprint — deploys the Muffin Music backend as a Docker web service.
+#
+# How to use:
+#   1. Push this repo to GitHub (git init → add → commit → push).
+#   2. render.com → Dashboard → New → Blueprint → connect the GitHub repo.
+#   3. Render reads this file, builds server/Dockerfile and starts the service.
+#
+# Then bake the service URL into the app bundle:
+#   EXPO_PUBLIC_SERVER_URL=https://muffin-music-server.onrender.com npx expo run:android
+services:
+  - type: web
+    name: muffin-music-server
+    runtime: docker
+    plan: free
+    dockerfilePath: server/Dockerfile
+    dockerContextPath: server
+    healthCheckPath: /api/health

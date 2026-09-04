@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# app build artifacts
+app/dist/
+app/.expo/
+
+# server runtime (recreated by `npm run setup` / the Docker build)
+server/bin/
+server/cache/
+
+# android build artifacts (the prebuild dir is committed, caches are not)
+app/android/.gradle/
+app/android/build/
+app/android/app/build/
+app/android/app/.cxx/
+app/android/local.properties
+
+# freebuff thread state
+.freebuff/
+
+# logs & misc
+*.log
+server.pid
+.DS_Store

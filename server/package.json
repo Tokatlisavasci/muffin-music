@@ -1,0 +1,15 @@
+{
+  "name": "muffin-music-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "YouTube search + audio streaming proxy used by the Muffin Music (Spotify-style) Expo app.",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs",
+    "setup": "node scripts/ensure-ytdlp.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
